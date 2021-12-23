@@ -34,7 +34,7 @@ class Cell
     private $padding = array();
     private ?array $textColor;
 
-    public function __construct(Row $row, $text = '', ?array $textColor)
+    public function __construct(Row $row, $text = '', array $textColor = null)
     {
         $this->row = $row;
         $this->textColor = $textColor;
