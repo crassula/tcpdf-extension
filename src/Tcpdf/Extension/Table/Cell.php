@@ -479,6 +479,13 @@ class Cell
         return $this->getTableRow();
     }
 
+    public function setTextColor(array $color): self
+    {
+        $this->textColor = $color;
+
+        return $this;
+    }
+
     public function getTextColor(): ?array
     {
         return $this->textColor;
