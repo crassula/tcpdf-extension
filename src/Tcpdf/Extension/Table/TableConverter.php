@@ -620,6 +620,14 @@ class TableConverter
             false
         ));
 
+        $textColor = $cell->getTextColor();
+        $textColorReplaced = false;
+
+        if (is_array($textColor)) {
+            $pdf->SetTextColor(...$textColor);
+            $textColorReplaced = true;
+        }
+
         // write cell to pdf
         $pdf->MultiCell(
             $width,
@@ -639,6 +647,10 @@ class TableConverter
             strtoupper(substr($cell->getVerticalAlign(), 0, 1)), // vertical alignment T, M or B
             $cell->getFitCell()
         );
+
+        if ($textColorReplaced) {
+            $pdf->SetTextColor();
+        }
     }
 
     private function _execPageBreakCallback($rowIndex, &$cellWidths, &$rowHeights, &$rowspanInfos, &$rows)

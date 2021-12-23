@@ -32,10 +32,12 @@ class Cell
     private $fontSize;
     private $fontWeight;
     private $padding = array();
+    private ?array $textColor;
 
-    public function __construct(Row $row, $text = '')
+    public function __construct(Row $row, $text = '', ?array $textColor)
     {
         $this->row = $row;
+        $this->textColor = $textColor;
         $this->setText($text);
         $this->setBorderWidth($row->getTable()->getBorderWidth());
         $this->setFontFamily($row->getTable()->getFontFamily());
@@ -475,5 +477,10 @@ class Cell
     public function end()
     {
         return $this->getTableRow();
+    }
+
+    public function getTextColor(): ?array
+    {
+        return $this->textColor;
     }
 }
